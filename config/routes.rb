@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :user_files
   devise_for :users
   get 'user_file_tags/:user_file_tag', to: 'user_files#index', as: :user_file_tag
+  get '/share', to: 'user_files#shared_link'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -16,6 +16,11 @@
 </p>
 
 <p>
+  <strong>FileSharing:</strong>
+  <%= link_to 'Share', "/share?slug=#{@user_file.slug}" %>
+</p>
+
+<p>
   <strong>Tags:</strong>
   <%= raw @user_file.user_file_tags.map(&:name).map { |t| link_to t, user_file_tag_path(t) }.join(', ') %>
 </p>

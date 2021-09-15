@@ -1,5 +1,5 @@
 class UserFilesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[shared_link]
   before_action :set_user_file, only: %i[ show edit update destroy ]
 
   # GET /user_files or /user_files.json
@@ -60,6 +60,18 @@ class UserFilesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def shared_link
+    @user_file = UserFile.where(slug: params[:slug]).first
+    respond_to do |format|
+      if @user_file.present?
+        format.html { render :template => "user_files/shared_file"}
+      else
+        render :plain => 'Not Found', :status => '404'
+      end
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
