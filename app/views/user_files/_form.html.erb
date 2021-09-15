@@ -26,6 +26,11 @@
     <%= form.file_field :file %>
   </div>
 
+  <div class="field">
+    <%= form.label :tag %>
+    <%= form.select :user_file_tag_ids, options_for_select(UserFileTag.order(:name).map{|s| [s.name, s.id]}), input_html: {multiple: true} %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

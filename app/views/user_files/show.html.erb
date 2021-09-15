@@ -15,5 +15,10 @@
   <%= link_to @user_file.file.filename, rails_blob_path(@user_file.file, disposition: :attachment) %>
 </p>
 
+<p>
+  <strong>Tags:</strong>
+  <%= raw @user_file.user_file_tags.map(&:name).map { |t| link_to t, user_file_tag_path(t) }.join(', ') %>
+</p>
+
 <%= link_to 'Edit', edit_user_file_path(@user_file) %> |
 <%= link_to 'Back', user_files_path %>

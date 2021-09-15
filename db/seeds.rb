@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+UserFileTag.create(name: "Personal")
+UserFileTag.create(name: "Business")
+UserFileTag.create(name: "Entertainment")
+UserFileTag.create(name: "Other")

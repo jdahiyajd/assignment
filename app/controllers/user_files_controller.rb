@@ -4,7 +4,11 @@ class UserFilesController < ApplicationController
 
   # GET /user_files or /user_files.json
   def index
-    @user_files = UserFile.where(user_id: current_user.id)
+    if params[:user_file_tag]
+      @user_files = UserFile.tagged_with(params[:user_file_tag]).where(user_id: current_user.id)
+    else
+      @user_files = UserFile.where(user_id: current_user.id)
+    end
   end
 
   # GET /user_files/1 or /user_files/1.json
@@ -65,6 +69,6 @@ class UserFilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_file_params
-      params.require(:user_file).permit(:title, :desc, :file)
+      params.require(:user_file).permit(:title, :desc, :file, :user_file_tag_list, :user_file_tag, { user_file_tag_ids: [] }, :user_file_tag_ids)
     end
 end
