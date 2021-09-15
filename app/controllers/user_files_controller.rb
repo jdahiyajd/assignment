@@ -65,6 +65,6 @@ class UserFilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_file_params
-      params.require(:user_file).permit(:title, :desc, :user_id)
+      params.require(:user_file).permit(:title, :desc, :file)
     end
 end
