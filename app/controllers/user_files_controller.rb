@@ -1,6 +1,7 @@
 class UserFilesController < ApplicationController
   before_action :authenticate_user!, except: %i[shared_link]
   before_action :set_user_file, only: %i[ show edit update destroy ]
+  layout false, only: %i[shared_link]
 
   # GET /user_files or /user_files.json
   def index
